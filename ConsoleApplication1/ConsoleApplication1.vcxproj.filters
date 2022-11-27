@@ -26,5 +26,11 @@
     <None Include="date.out">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="date1.in">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="datez.in">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

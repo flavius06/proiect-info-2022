@@ -132,6 +132,8 @@
   <ItemGroup>
     <None Include="date.in" />
     <None Include="date.out" />
+    <None Include="date1.in" />
+    <None Include="datez.in" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
