@@ -1,19 +1,27 @@
+#include <cmath>
+#include <windows.h>
+#include <conio.h>
+#include <chrono>
+#include <thread>
+#include <stdio.h>
+#include <vector>
 #include <iostream>
 #include <fstream>
+
 using namespace std;
+
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 ifstream fin("date.in");
 ifstream gin("date1.in");
 ifstream zin("datez.in");
-
-bool ocupat(int n) {
-    if (n == -1) return false; 
-    if (n == 0) return true;
-}
-
+ifstream rin("dater.in");
 
 int main()
 {
+    SetConsoleTextAttribute
+    (GetStdHandle(STD_OUTPUT_HANDLE), 71);
+    cout << "            HOTEL PLAPUMIOARA          \n\n";
     int cerinta;
     int nr_clienti;
     int count_camere_l1 = 0;
@@ -24,9 +32,16 @@ int main()
     int mat_hotel[200][200], count_camere_l = 0;
     int mat_camere[200][200], nr_cl, nr_ll, cl, ll;
     int mat_hotel_liber[200][200], nr_cz, nr_lz, lz, cz;
+    int i, j, n, m, mat_rev[200][200];
     zin >> nr_lz >> nr_cz;
     gin >> nr_ll >> nr_cl;
     fin >> nr_l >> nr_c;
+    rin >> n >> m;
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= m; j++) {
+            rin >> mat_rev[i][j];
+        }
+    }
     for (lz = 1; lz <= nr_lz; lz++) {
         for (cz = 1; cz <= nr_cz; cz++) {
             zin >> mat_hotel_liber[lz][cz];
@@ -44,6 +59,9 @@ int main()
     }
     switch (cerinta) {
     case 1:
+
+        system("Color 0E");
+
         for (l = 1; l <= nr_l; l++) {
             for (c = 1; c <= nr_c; c++) {
                 if (mat_hotel[l][c] == 0) {
@@ -58,6 +76,8 @@ int main()
 
         break;
     case 2:
+
+        system("Color 4F");
 
         cout << "introduceti numarul de clienti" << '\n';
         cin >> nr_clienti;
@@ -91,6 +111,8 @@ int main()
 
     case 3:
 
+        system("Color 9D");
+
         for (ll = 1; ll <= nr_ll; ll++) {
             for (cl = 1; cl <= nr_cl; cl++) {
                 if (mat_camere[ll][cl] == 1) k1++;
@@ -105,6 +127,9 @@ int main()
 
         break;
     case 4:
+
+        system("Color 6D");
+
         int persoane;
         cout << "Introduceti numarul de persoane care vin intr-o zi la hotel" << '\n';
         for (int i = 1; i < 7; i++) {
@@ -126,6 +151,48 @@ int main()
             }
         }
 
-            break;
+        break;
+    case 5:
+    {
+        system("Color 06");
+
+        int menajere = 0, receptionere = 0, reparatori = 0, suma_finala = 0;
+        cout << "Introduceti suma de bani pe care o castiga Diana: " << '\n';
+        int castig;
+        cin >> castig;
+        cout << "Acum introduceti numarul angajatilor... Pe prima linie cel al menajerelor, pe a 2 al reparatorilor, iar pe a 3 a al receptionerelor" << '\n';
+        int a, b, x, y, mat[200][200];
+        cin >> x >> y;
+        for (a = 1; a <= x; a++) {
+            for (b = 1; b <= y; b++) {
+                cin >> mat[a][b];
+            }
+        }
+        for (a = 1; a <= x; a++) {
+            for (b = 1; b <= y; b++) {
+                if (mat[1][b] != 0) menajere++;
+                if (mat[2][b] != 0) reparatori++;
+                if (mat[3][b] != 0) receptionere++;
+            }
+        }
+        suma_finala = castig - (menajere / 100 * castig) - (reparatori / 100 * castig) - (receptionere / 100 * castig);
+        cout << "suma cu care ramane Diana este: " << suma_finala << '\n';
+        break;
+    }
+    case 6:
+
+        system(" Color E5");
+
+        int rating, sumar = 0, kont = 0;
+        for (i = 1; i <= n; i++) {
+            for (j = 1; j <= m; j++) {
+                if (mat_rev[i][j] > 0) {
+                    kont++;
+                    sumar += mat_rev[i][j];
+                }
+            }
+        }
+        rating = sumar / kont;
+        cout << "ratingul hotelului este:  " << rating << "  /10";
     }
 }

@@ -32,5 +32,8 @@
     <None Include="datez.in">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="dater.in">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
